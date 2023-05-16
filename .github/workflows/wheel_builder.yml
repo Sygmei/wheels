@@ -16,7 +16,7 @@ jobs:
         run: python --version
 
       - name: Download Python package source files
-        run: "pip download ${{ github.event.issue.title }} --no-binary :all:"
+        run: "pip wheel ${{ github.event.issue.title }}"
 
       - name: Check contents
         run: ls
