@@ -1,0 +1,15 @@
+name: Wheel builder
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Download Python package source files
+        run: pip download ${{ github.event.issue.title }}
+
+      - name: Check contents
+        run: ls
