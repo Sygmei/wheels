@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Download Python package source files
-        run: pip download ${{ github.event.issue.title }}
+        run: pip download ${{ github.event.issue.title }} --no-binary :all:
 
       - name: Check contents
         run: ls
