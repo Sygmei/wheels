@@ -8,8 +8,11 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+      - name: Check Python version
+        run: python --version
+
       - name: Download Python package source files
-        run: pip download ${{ github.event.issue.title }} --no-binary :all:
+        run: "pip download ${{ github.event.issue.title }} --no-binary :all:"
 
       - name: Check contents
         run: ls
