@@ -20,3 +20,9 @@ jobs:
 
       - name: Check contents
         run: ls
+
+      - name: Upload wheels
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.event.issue.title }}
+          path: "*"
