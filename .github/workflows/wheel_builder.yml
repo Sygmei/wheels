@@ -12,17 +12,18 @@ jobs:
         with:
           python-version: '3.11'
 
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Check Python version
         run: python --version
 
-      - name: Download Python package source files
+      - name: Build wheel
         run: "pip wheel ${{ github.event.issue.title }}"
 
       - name: Check contents
         run: ls
 
-      - name: Upload wheels
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ github.event.issue.title }}
-          path: "*"
+      - name: Push changes
+        run: 'git add . && git commit -m "added package ${{ github.event.issue.title }}" && git push'
