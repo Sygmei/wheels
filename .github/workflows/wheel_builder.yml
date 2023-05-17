@@ -24,6 +24,11 @@ jobs:
 
       - name: Check contents
         run: ls
+        
+      - name: Config git
+        run: |
+          git config --global user.name Sygmei
+          git config --global user.email "3835355+Sygmei@users.noreply.github.com" 
 
       - name: Push changes
         run: 'git add . && git commit -m "added package ${{ github.event.issue.title }}" && git push'
